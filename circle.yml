@@ -6,9 +6,9 @@ machine:
 dependencies:
     override:
         - npm install
+        - docker info
         #generate build tag and build a docker container
         - "DOCKER_TAG=$(./tag.sh) && ./build.sh $DOCKER_TAG"
-
 deployment:
     hub:
         branch: master
