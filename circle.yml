@@ -11,6 +11,7 @@ dependencies:
         - "DOCKER_TAG=$(./tag.sh) && ./build.sh $DOCKER_TAG"
 deployment:
     hub:
+        branch: ""
         commands:
             - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
             #push the image to docker hub using the generated tag
