@@ -15,4 +15,4 @@ DOCKER_IMAGE_REPO=ci-harness
 DOCKER_IMAGE="${DOCKER_IMAGE_OWNER}/${DOCKER_IMAGE_REPO}"
 
 echo building image "[$DOCKER_IMAGE:$DOCKER_TAG]"
-docker build --rm=false -t $DOCKER_IMAGE .
+docker build --rm=false -t ${DOCKER_IMAGE}:${DOCKER_TAG} .
