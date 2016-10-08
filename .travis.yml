@@ -1,0 +1,16 @@
+sudo: required
+
+language: node_js
+
+node_js:
+    - "6"
+
+services:
+    - docker
+
+before_install:
+    - "DOCKER_TAG=$(./tag.sh) && ./build.sh $DOCKER_TAG"
+
+after_success:
+    - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
+    - "DOCKER_TAG=$(./tag.sh) && docker push shawnleankit/ci-harness:$DOCKER_TAG"
