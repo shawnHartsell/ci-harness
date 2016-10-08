@@ -5,13 +5,16 @@ machine:
         version: 6
 dependencies:
     override:
+        - echo HAI
+        - echo $DOCKER_USER
+        - echo $DOCKER_PASS
         - npm install
         - docker info
         #generate build tag and build a docker container
         - "DOCKER_TAG=$(./tag.sh) && ./build.sh $DOCKER_TAG"
 deployment:
     hub:
-        branch: ""
+        branch: "master"
         commands:
             - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
             #push the image to docker hub using the generated tag
