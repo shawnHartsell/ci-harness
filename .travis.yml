@@ -9,6 +9,8 @@ services:
     - docker
 
 after_success:
+    -echo HAI
+    - echo $DOCKER_PASS
     - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
     - "DOCKER_TAG=$(./tag.sh) && ./build.sh $DOCKER_TAG"
     - "DOCKER_TAG=$(./tag.sh) && docker push shawnleankit/ci-harness:$DOCKER_TAG"
