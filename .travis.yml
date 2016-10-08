@@ -9,7 +9,7 @@ services:
     - docker
 
 after_success:
-    -echo HAI
+    - echo HAI
     - echo $DOCKER_PASS
     - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
     - "DOCKER_TAG=$(./tag.sh) && ./build.sh $DOCKER_TAG"
